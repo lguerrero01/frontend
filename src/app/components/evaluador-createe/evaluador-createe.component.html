@@ -1,0 +1,69 @@
+<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+  <h5 class="my-0 mr-md-auto font-weight-normal">Crud Evaluadores</h5>
+  <nav class="my-2 my-md-0 mr-md-3">
+    <a class="btn btn-outline-primary" routerLinkActive="active" routerLink="/evaluador-list">Ver Evaluadores</a>
+  </nav>
+  <a class="btn btn-outline-primary" routerLinkActive="active" routerLink="/evaluador-createe">Añadir Evaluador</a>
+</div>
+
+<div class="row justify-content-center contenedor">
+  <div class="col-md-4 register-employee">
+    <!-- form card register -->
+    <div class="card-body">
+      <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="inputName">Nombre</label>
+          <input class="form-control" type="text" formControlName="firstName">
+          <!-- error -->
+          <div class="invalid-feedback" *ngIf="submitted && myForm.firstName.errors?.required">
+            Name is required.
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="inputName">Apellido</label>
+          <input class="form-control" type="text" formControlName="lastName">
+          <!-- error -->
+          <div class="invalid-feedback" *ngIf="submitted && myForm.lastName.errors?.required">
+            Apellido is required.
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="inputName">Cargo</label>
+          <input class="form-control" type="text" formControlName="position">
+          <!-- error -->
+          <div class="invalid-feedback" *ngIf="submitted && myForm.position.errors?.required">
+            Cargo is required.
+          </div>
+        </div>
+
+        <!-- <div class="form-group">
+          <label for="inputPassword3">Alcance</label>
+          <select class="custom-select form-control" (change)="updateProfile($event.target.value)">
+            <option value="">Choose...</option>
+            <option *ngFor="let employeeProfile of EmployeeProfile" value="{{employeeProfile}}">{{employeeProfile}}
+            </option>
+          </select>
+           
+          <div class="invalid-feedback" *ngIf="submitted && myForm.designation.errors?.required">
+            Choose designation.
+          </div>
+        </div> -->
+
+        <div class="form-group">
+          <label for="inputName">Tipo</label>
+          <input class="form-control" type="text" formControlName="type">
+          <!-- error -->
+          <div class="invalid-feedback" *ngIf="submitted && myForm.type.errors?.required">
+            tipo is required.
+          </div>
+        </div>
+
+        <div class="form-group">
+          <button class="btn btn-success btn-lg btn-block" type="submit">Enviar</button>
+        </div>
+      </form>
+
+    </div>
+  </div><!-- form card register -->
+</div>

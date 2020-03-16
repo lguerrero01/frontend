@@ -1,0 +1,42 @@
+<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+  <h5 class="my-0 mr-md-auto font-weight-normal">Crud Evaluadores</h5>
+  <nav class="my-2 my-md-0 mr-md-3">
+    <a class="btn btn-outline-primary" routerLinkActive="active" routerLink="/evaluador-list">Ver Evaluadores</a>
+  </nav>
+  <a class="btn btn-outline-primary" routerLinkActive="active" routerLink="/evaluador-createe">Añadir Evaluador</a>
+</div>
+<div class="container">
+  <!-- No data message -->
+  <p *ngIf="Employee.length <= 0" class="no-data text-center">No hay evaluadores aun</p>
+
+  <!-- Employee list -->
+  <table class="table table-bordered" *ngIf="Employee.length > 0">
+    <thead class="table-success">
+      <tr>
+        <th scope="col">Evaluador ID</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Apellido</th>
+        <th scope="col">cargo</th>
+        <th scope="col">tipo</th>
+        <th scope="col center">Update</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let employee of Employee; let i = index">
+        <th scope="row">{{employee._id}}</th>
+        <td>{{employee.firstName}}</td>
+        <td>{{employee.lastName}}</td>
+        <td>{{employee.position}}</td>
+        <td>{{employee.type}}</td>
+        <td class="text-center edit-block">
+          <span class="edit" [routerLink]="['/evaluador-edit/', employee._id]">
+            <button type="button" class="btn btn-success btn-sm">Edit</button>
+          </span>
+          <span class="delete" (click)="removeEmployee(employee, i)">
+            <button type="button" class="btn btn-danger btn-sm">Delete</button>
+          </span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
