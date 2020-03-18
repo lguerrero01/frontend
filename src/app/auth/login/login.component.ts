@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
 
   onLogin(form): void {
     this.authService.login(form.value).subscribe(res => {
-      this.router.navigateByUrl('/auth');
+      this.router.navigateByUrl('/evaluador-createe');
     });
   }
 
@@ -26,6 +26,8 @@ export class LoginComponent implements OnInit {
     console.log(myUrl);
     this.router.navigateByUrl(myUrl);
   }
+
+
 
 
 }

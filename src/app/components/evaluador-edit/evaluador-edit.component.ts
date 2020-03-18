@@ -29,7 +29,7 @@ export class EvaluadorEditComponent implements OnInit {
     let id = this.actRoute.snapshot.paramMap.get('id');
     this.getEmployee(id);
     this.editForm = this.fb.group({
-      fisrtName: ['', [Validators.required]],
+      firstName: ['', [Validators.required]],
       lastName: ['', [Validators.required]],
       position: ['', [Validators.required]],
       type: ['', [Validators.required]]

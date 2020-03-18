@@ -8,7 +8,7 @@ import { Observable, BehaviorSubject } from 'rxjs';
 
 @Injectable()
 export class AuthService {
-  AUTH_SERVER: string = 'http://localhost:3000';
+  AUTH_SERVER: string = 'http://localhost:3000/api';
   authSubject = new BehaviorSubject(false);
   private token: string;
   constructor(private httpClient: HttpClient) { }
@@ -19,7 +19,8 @@ export class AuthService {
         (res: JwtResponseI) => {
           if (res) {
             // guardar token
-            this.saveToken(res.dataUser.accessToken, res.dataUser.expiresIn);
+            console.log(res);
+            this.saveToken(res.accessToken, res.expiresIn);
           }
         })
       );
@@ -31,7 +32,7 @@ export class AuthService {
         (res: JwtResponseI) => {
           if (res) {
             // guardar token
-            this.saveToken(res.dataUser.accessToken, res.dataUser.expiresIn);
+            this.saveToken(res.accessToken, res.expiresIn);
           }
         })
       );
