@@ -21,4 +21,11 @@ export class LoginComponent implements OnInit {
     });
   }
 
+  irRegistro(url) {
+    var myUrl = `${url}`;
+    console.log(myUrl);
+    this.router.navigateByUrl(myUrl);
+  }
+
+
 }
