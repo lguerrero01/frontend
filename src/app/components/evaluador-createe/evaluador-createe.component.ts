@@ -2,6 +2,9 @@ import { Router } from '@angular/router';
 import { ApiService } from './../../services/api.service';
 import { Component, OnInit, NgZone } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
+import { MatButtonToggleChange } from '@angular/material/button-toggle';
+import { EvaluadorModel } from 'src/app/models/evaluador.model';
+
 
 @Component({
   selector: 'app-employee-create',
@@ -10,10 +13,14 @@ import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 })
 
 export class EvaluadorCreateeComponent implements OnInit {
+  selectEstado: string = '';
   submitted = false;
   employeeForm: FormGroup;
-  EmployeeProfile: any = ['Finance', 'BDM', 'HR', 'Sales', 'Adminm']
-
+  EmployeeProfile: any = ['Finance', 'BDM', 'HR', 'Sales', 'Adminm'];
+  tipo: string;
+  clientes: string[];
+  ubicaciones: Array<string[]>;
+  clientesEstadales: string[];
   constructor(
     public fb: FormBuilder,
     private router: Router,
@@ -41,13 +48,22 @@ export class EvaluadorCreateeComponent implements OnInit {
     })
   }
 
-  // Getter to access form control
+
   get myForm() {
     return this.employeeForm.controls;
   }
 
   onSubmit() {
+    let tipoAlcance: EvaluadorModel;
+    tipoAlcance.firstName = this.employeeForm.value['firstName'];
+    tipoAlcance.lastName = this.employeeForm.value['lastName'];
+    tipoAlcance.position = this.employeeForm.value['position'];
+    tipoAlcance.type = this.employeeForm.value['type'];
+    tipoAlcance.ratio.tipoAlcance = this.tipo;
+
+
     this.submitted = true;
+    console.log(this.employeeForm);
     if (!this.employeeForm.valid) {
       return false;
     } else {
@@ -61,4 +77,28 @@ export class EvaluadorCreateeComponent implements OnInit {
     }
   }
 
+  tipoNacional(e: MatButtonToggleChange) {
+
+
+    this.tipo = e.value;
+    if (e.value === "nacional") {
+      this.clientes = ['empresa1', 'empresa2', 'empresa3'];
+      this.selectEstado = '';
+    } else {
+      this.clientes = ['carabobo', 'apure', 'merida'];
+    }
+
+  }
+
+  listaEstados(e) {
+    this.selectEstado = e.value;
+    console.log(e.value);
+    this.clientesEstadales = ['clientes', 'cliente hemny prostituta', 'cliente 2'];
+
+
+  }
+
+  ubicacionesClientes(e) {
+    this.ubicaciones = [['zona industrial'], ['guacara'], ['guigue']];
+  }
 }

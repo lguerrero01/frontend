@@ -149,3 +149,6 @@ html {
 .card-deck .card {
   min-width: 220px;
 }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
